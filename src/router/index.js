@@ -14,14 +14,9 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/report',
+    path: '/report/kmom01',
     name: 'Redovisning',
     component: () => import('../views/Report.vue')
-  },
-  {
-    path: '/report/kmom01',
-    name: 'Kmom01',
-    component: () => import('../views/kmom01.vue')
   },
   {
     path: '/about',
