@@ -1,12 +1,6 @@
 <template>
   <div id="app">
     <h1>ME-sida i kursen jsramverk</h1>
-    <div id="nav">
-      <router-link to="/">Hem</router-link> |
-      <router-link to="/report">Redovisning</router-link> |
-      <router-link to="/about">Om</router-link> |
-      <router-link to="/vueinfo">VueInfo</router-link>
-    </div>
     <router-view/>
   </div>
 </template>

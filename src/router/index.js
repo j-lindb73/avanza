@@ -24,16 +24,6 @@ Vue.use(VueRouter)
     component: () => import('../views/kmom01.vue')
   },
   {
-    path: '/report/kmom02',
-    name: 'Kmom01',
-    component: () => import('../views/kmom02.vue')
-  },
-  {
-    path: '/report/kmom03',
-    name: 'Kmom01',
-    component: () => import('../views/kmom03.vue')
-  },
-  {
     path: '/about',
     name: 'Om',
     // route level code-splitting
