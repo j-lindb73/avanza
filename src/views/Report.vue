@@ -2,44 +2,15 @@
   
     <div class="w3-content">
       <Nav />
+      <NavReport />
       <div class="w3-animate-opacity w3-card-4">
         <h1> Redovisning </h1>
+        <router-link :to="{ path: `/reports/week/edit/${$route.params.kmom}` }">Redigera</router-link>
         <article class="w3-container">
-          <MarkdownItVue :content='content' />
+          <MarkdownItVue :content='text' />
           <div>
-          <h3>Länk till github:</h3>
-            <a href='https://github.com/j-lindb73/me-app/' target='_blank'>https://github.com/j-lindb73/me-app/</a>
-          </div>
-          <div>
-            <h1> me-app </h1>
+            <!-- {{ text }} -->
 
-            <h2> Project setup </h2>
-            Set up the environment and install dependencies
-            <div class="code-body">
-              npm install
-            </div>
-
-            <h3> Compiles and hot-reloads for development</h3>
-            Start development server. Saved changes a loaded on-the-fly.
-            <div class="code-body">
-              npm run serve
-            </div>
-
-
-            <h3> Compiles and minifies for production</h3>
-            Create production files.
-            <div class="code-body">
-              npm run build
-            </div>
-
-            <h3> Lints and fixes files</h3>
-            Check and fix files for/from lint errors.
-            <div class="code-body">
-             npm run lint
-            </div>
-
-            <h3> Customize configuration</h3>
-            See <a href="https://cli.vuejs.org/config/" target="_blank">Configuration Reference</a>
           </div>
         </article>
       </div>
@@ -49,8 +20,10 @@
 
 <script>
 import Nav from '@/components/Nav.vue'
+import NavReport from '@/components/NavReport';
 import MarkdownItVue from 'markdown-it-vue'
 import Footer from '@/views/Footer'
+console.log()
 // import 'markdown-it-vue/dist/markdown-it-vue.css'
 // https://www.npmjs.com/package/markdown-it-vue
 
@@ -58,17 +31,47 @@ import Footer from '@/views/Footer'
 
 export default {
 
+
   name: 'report',
   components: {
     Nav,
+    NavReport,
     MarkdownItVue,
     Footer
   },
   data() {
     return {
-      content: '## Kmom01 ##'
+      content: '## Kmom01 ##',
+      text: ""
     }
   },
+  mounted() {
+    console.log("mounted");
+    this.getReport()
+  },
+  watch: {
+    // console.log("updated");
+    '$route': 'getReport'
+  },
+  methods: {
+    getReport() {
+      let week = this.$route.params.kmom;
+      let that = this;
+      // fetch("https://me-api.jsramverk.se")
+      fetch("http://localhost:1337/reports/week/" + week)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(result) {
+        console.log(result.data);
+        that.text = result.data.text;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    }
+
+  }
 }
 
 

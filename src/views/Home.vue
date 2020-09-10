@@ -1,7 +1,7 @@
 <template>
   <div class="w3-content" style="max-width:1400px">
     <Nav />
-
+  
     <article class="w3-animate-opacity w3-card-4 w3-row">
         
       <img class="w3-card-2 w3-col m4 l3"  src="../assets/johan.jpg" width="300" alt="Bild på mig">
@@ -17,6 +17,8 @@
 
 <script>
 import Nav from '@/components/Nav'
+// import NavSecure from '@/components/NavSecure'
+// import Auth from '@/components/Auth'
 import Footer from '@/views/Footer'
 
 export default {
@@ -24,7 +26,9 @@ export default {
   props: { },
   components: {
     Nav,
-    Footer
+    Footer,
+    // NavSecure,
+    // Auth
   },
   data() {
     return {
@@ -32,7 +36,7 @@ export default {
         name: ""
     }
   },
-  mounted() {
+  created() {
     this.getMe();
   },
   methods: {
@@ -45,6 +49,7 @@ export default {
           return response.json();
       })
       .then(function(result) {
+        console.log(result);
           that.text = result.description;
           that.name = result.name;
       });

@@ -1,0 +1,15 @@
+<template>
+    <div class="w3-content" id="nav">
+    <router-link to="/reports/week/1">Kmom01</router-link> |
+    <router-link to="/reports/week/2">Kmom02</router-link>
+    </div>
+</template>
+
+<script>
+
+// import Auth from '../components/Auth'
+
+export default {
+    name: 'NavReport'
+}
+</script>
