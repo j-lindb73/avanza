@@ -23,6 +23,9 @@
 </template>
 
 <script>
+
+import Vars from '@/components/Vars'
+
 export default {
     name: 'Register_form',
     data() {
@@ -44,13 +47,14 @@ export default {
                     })
             }
             console.log(requestOptions);
-            fetch("http://localhost:1337/register", requestOptions)
+            // fetch("http://localhost:1337/register", requestOptions)
+            fetch(Vars.baseUrl + "/register", requestOptions)
             .then(function(response) {
                 console.log(response);
                  return response.json();
             })
             .then(function(result) {
-                this.msg = result.data;
+                // this.msg = result.data;
                 console.log(result);
             })
         }

@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import Vars from '@/components/Vars';
 import Nav from '@/components/Nav.vue'
 import NavReport from '@/components/NavReport';
 import MarkdownItVue from 'markdown-it-vue'
@@ -58,7 +59,8 @@ export default {
       let week = this.$route.params.kmom;
       let that = this;
       // fetch("https://me-api.jsramverk.se")
-      fetch("http://localhost:1337/reports/week/" + week)
+      // fetch("http://localhost:1337/reports/week/" + week)
+      fetch(Vars.baseUrl +'/reports/week/' + week)
       .then(function(response) {
         return response.json();
       })

@@ -20,6 +20,8 @@
 <script>
 
 import Auth from '@/components/Auth';
+import Vars from '@/components/Vars'
+
 export default {
     name: 'Report_formEdit',
     data() {
@@ -46,7 +48,8 @@ export default {
                     })
             }
             console.log(requestOptions);
-            fetch("http://localhost:1337/reports/", requestOptions)
+            // fetch("http://localhost:1337/reports/", requestOptions)
+            fetch(Vars.baseUrl + "/reports/", requestOptions)
             .then(function(response) {
                 console.log(response);
                  return response.json();
@@ -58,7 +61,8 @@ export default {
         getReport(week) {
         let that = this;
         // fetch("https://me-api.jsramverk.se")
-        fetch("http://localhost:1337/reports/week/" + week)
+        // fetch("http://localhost:1337/reports/week/" + week)
+        fetch(Vars.baseUrl + "/reports/week/" + week)
         .then(function(response) {
             return response.json();
         })

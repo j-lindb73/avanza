@@ -22,6 +22,7 @@
 <script>
 
 import Auth from '../components/Auth';
+import Vars from '../components/Vars';
 
 export default {
     name: 'Login_form',
@@ -46,7 +47,8 @@ export default {
                     })
             }
             // console.log(requestOptions);
-            fetch("http://localhost:1337/login", requestOptions)
+            // fetch("http://localhost:1337/login", requestOptions)
+            fetch(Vars.baseUrl + "/login", requestOptions)
             .then(function(response) {
                 console.log(response);
                 return response.json();

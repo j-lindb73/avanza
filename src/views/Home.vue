@@ -17,8 +17,7 @@
 
 <script>
 import Nav from '@/components/Nav'
-// import NavSecure from '@/components/NavSecure'
-// import Auth from '@/components/Auth'
+import Vars from '@/components/Vars';
 import Footer from '@/views/Footer'
 
 export default {
@@ -43,7 +42,10 @@ export default {
     getMe() {
       let that = this;
       // fetch("https://me-api.jsramverk.se")
-      fetch("http://localhost:1337")
+      // fetch("http://localhost:1337")
+      // fetch("https://me-api.hasselstigen.me")
+
+      fetch(Vars.baseUrl)
       .then(function(response) {
         console.log(response);
           return response.json();

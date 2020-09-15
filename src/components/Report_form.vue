@@ -22,6 +22,8 @@
 <script>
 
 import Auth from '@/components/Auth';
+import Vars from '@/components/Vars'
+
 export default {
     name: 'Report_form',
     data() {
@@ -45,7 +47,7 @@ export default {
                     })
             }
             console.log(requestOptions);
-            fetch("http://localhost:1337/reports/", requestOptions)
+            fetch(Vars.baseUrl + "/reports/", requestOptions)
             .then(function(response) {
                 console.log(response);
                  return response.json();
