@@ -17,6 +17,5 @@ before_script:
     - npm build
 
 script:
-    - npm start
     - npm test
 

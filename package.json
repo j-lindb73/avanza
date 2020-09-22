@@ -6,7 +6,8 @@
     "start": "node node_modules/http-server/bin/http-server -p 8082 dist",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test": "mocha 'test/test.js'",
+    "test-command": "mocha 'test/test.js'",
+    "test": "npm start & npm run test-command",
     "lint": "vue-cli-service lint",
     "deploy": "npm run build && rsync -av dist/* deploy@hasselstigen.me:/var/www/me-app.hasselstigen.me/html/",
     "clean-all": "rm -rf node_modules"
