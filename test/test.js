@@ -22,7 +22,10 @@ test.describe("Multipage", function() {
     test.beforeEach(function(done) {
         this.timeout(20000);
         browser = new webdriver.Builder().
-            withCapabilities(webdriver.Capabilities.firefox()).build();
+            withCapabilities(webdriver.Capabilities.firefox())
+            .setFirefoxOptions(new firefox.Options().headless())
+            .forBrowser('firefox')
+            .build();
 
         browser.get("http://localhost:8082/");
         done();
