@@ -1,3 +1,4 @@
+
 language: node_js
 
 node_js:
@@ -13,9 +14,9 @@ git:
 
 before_script:
     - npm install
+    - npm build
 
 script:
+    - npm start
     - npm test
-
-
 
