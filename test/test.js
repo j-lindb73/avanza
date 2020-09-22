@@ -28,7 +28,7 @@ test.describe("Multipage", function() {
             .forBrowser('firefox')
             .build();
 
-        browser.get("http://localhost:8082/");
+        browser.get("http://127.0.0.1:8082");
         done();
     });
 
