@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/j-lindb73/me-app.svg?branch=master)](https://travis-ci.org/github/j-lindb73/me-app)
+
 # me-app
 
 ## Project setup
@@ -23,6 +25,25 @@ Create production files.
 ```
 npm run build
 ```
+
+### Test for production
+
+Run automated test for production.
+
+```
+npm test
+```
+
+If problems run separately:
+
+```
+npm start
+```
+...and...
+```
+npm test-command
+```
+
 
 ### Lints and fixes files
 
