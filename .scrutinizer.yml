@@ -1,0 +1,12 @@
+checks:
+    javascript: true
+
+filter:
+    excluded_paths:
+          test/*
+build:
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - js-scrutinizer-run

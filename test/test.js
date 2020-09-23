@@ -3,8 +3,6 @@
  */
 "use strict";
 
-
-
 const assert = require("assert");
 const test = require("selenium-webdriver/testing");
 const firefox = require("selenium-webdriver/firefox");
@@ -36,9 +34,17 @@ function assertH1(target) {
     });
 }
 
+function assertH2(target) {
+    browser.findElement(By.css("h2")).then(function(element) {
+        element.getText().then(function(text) {
+            assert.equal(text, target);
+        });
+    });
+}
+
 
 // Test suite
-test.describe("Multipage", function() {
+test.describe("ME-APP TESTING", function() {
     this.timeout(0);
 
     test.beforeEach(function(done) {
@@ -57,46 +63,42 @@ test.describe("Multipage", function() {
         done();
     });
 
-
-
-
-
     // Test case
-    test.it("Test index", function(done) {
-        let promise = browser.getTitle();
-
-        promise.then(function(title) {
-            assert.equal(title, "me-app");
-        });
+    test.it("Test landing page", function(done) {
 
         browser.getTitle().then(function(title) {
             assert.equal(title, "me-app");
         });
 
         assertH1("ME-sida i kursen jsramverk");
+
         matchUrl("/");
+
+        done();
+    });
+
+    test.it("Test Report - should be able to click Edit on report Kmom02", function(done) {
+
+        goToNavLink("Redovisning");
+
+        goToNavLink("Kmom02");
+
+        matchUrl("/reports/week/2" );
+
+        goToNavLink("Redigera");
+
+        matchUrl("/reports/week/edit/2" );
+
+        assertH2("Redigera rapport");
 
         done();
     });
 
 
 
-    // test.it("Test go to Home", function(done) {
-    //     // try use nav link
-    //     goToNavLink("Home");
-
-    //     assertH1("Home");
-    //     matchUrl("#!/" );
-
-    //     done();
-    // });
-
-
-
-    test.it("Test go to Om", function(done) {
+    test.it("Test About-page", function(done) {
         goToNavLink("Om");
 
-   
         matchUrl("/about");
 
         done();

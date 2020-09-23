@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="w3-content">
     <Nav />
     <div class="w3-animate-opacity w3-card-4">
     <img alt="Vue logo" src="../assets/logo.png">
