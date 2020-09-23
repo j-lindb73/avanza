@@ -18,4 +18,6 @@ before_script:
 
 script:
     - npm test
+    - curl www.sunet.se
+    - curl localhost:8082
 
