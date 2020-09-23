@@ -3,7 +3,7 @@ checks:
 
 filter:
     excluded_paths:
-          test/*
+          test/
 build:
     nodes:
         analysis:
