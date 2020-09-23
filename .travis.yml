@@ -14,10 +14,9 @@ git:
 
 before_script:
     - npm install
-    - npm build
+    - npm run build
 
 script:
     - npm test
-    - curl www.sunet.se
-    - curl localhost:8082
+
 
