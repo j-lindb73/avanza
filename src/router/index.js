@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Chat from '../views/Chat.vue'
 import Report from '../views/Report.vue'
 import ReportNew from '../views/ReportNew.vue'
 import ReportEdit from '../views/ReportEdit.vue'
@@ -16,6 +17,11 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Hem',
     component: Home
+  },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: Chat
   },
   {
     path: '/reports/week/new',
