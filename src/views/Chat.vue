@@ -9,7 +9,7 @@
         <h4>Välkommen! Skriv gärna ditt användarnamn.</h4>
         <form class="w3-container w3-padding-48" @submit.prevent="setUsername">
             <input class="w3-margin" type="text" placeholder="Vem är du?" v-model="username" />
-            <input  type="submit" value="Börja tjöta..." />
+            <input  type="submit" value="Börja tjöta..." :disabled='isDisabled' />
         </form>
       </div>
       <div class="w3-container" v-show="state == 1">
@@ -31,6 +31,10 @@
     </article>
 
     <Footer />
+    <cookie-consent
+      :cookie-expiry-days="-1"
+      :buttonDisabled.sync="isDisabled"
+    />
   </div>
 </template>
 
@@ -38,7 +42,8 @@
 let socket = null;
 
 import Nav from '@/components/Nav'
-// import Vars from '@/components/Vars';
+import Vars from '@/components/Vars';
+import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/views/Footer'
 import io from 'socket.io-client';
 
@@ -48,23 +53,26 @@ export default {
   components: {
     Nav,
     Footer,
+    CookieConsent
   },
   data: function() {
       return    {
         message: '',
         messages: [],
         username: null,
-        state: 0
+        state: 0,
+        isDisabled: true
     } 
   },
   created: function () {
-    // socket = io('localhost:3000');
-    socket = io('https://socket-server.hasselstigen.me');
+    socket = io(Vars.socketUrl);
+    // socket = io('https://socket-server.hasselstigen.me');
+    this.getChatLog();
   },
   mounted: function() {
-      var self = this;
+    var self = this;
       socket.on('message', function(msg) {
-          self.messages.push(msg);
+        self.messages.push(msg);
       })
       this.scrollToEnd();
   },
@@ -75,7 +83,28 @@ export default {
     sendMessage: function() {
         socket.emit('message', this.message);
         // this.scrollToEnd();
+        // Save post in database
+        this.saveMessage();
+        // Clear current message
         this.message =  '';
+    },
+    saveMessage: function() {
+    console.log({Message: this.message});
+    var dISO = this.getNow();
+    const requestOptions = {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            user: this.username,
+            message: this.message,
+            timestamp: this.getTimestamp(dISO)
+            })
+    }
+    console.log(requestOptions);
+    // fetch("http://localhost:1337/chat", requestOptions)
+    fetch(Vars.baseUrl + "/chat", requestOptions)
+    .then(response => console.log(response))
+    .catch(err => console.log(err))  
     },
     scrollToEnd: function() {    	
     var chatbox = this.$el.querySelector("#chatbox");
@@ -102,7 +131,35 @@ export default {
         const time = today.getHours().toString().padStart(2,"0") + ":" + today.getMinutes().toString().padStart(2,"0") + ":" + today.getSeconds().toString().padStart(2,"0");
         const dateTime = date +' '+ time;
         return dateTime;
-    }
+    },
+    getChatLog: function() {
+      let self = this;
+      console.log(self.messages);
+      fetch(Vars.baseUrl + "/chat")
+      .then(function(response) {
+        // console.log(response);
+          return response.json();
+      })
+      .then(function(result) {
+        console.log(result);
+        // console.log(result[0]);
+        result.map( function(currentValue){
+          // console.log(index);
+          console.log(currentValue);
+          let bajs = {"user": currentValue.user, "message": currentValue.message, "timestamp": currentValue.timestamp};
+          // JSON.stringify(Object.assign({}, result))
+          self.messages.push(bajs);
+        })
+        // that.text = result.data.text;
+      })
+    },
+    getNow: function () {
+    const d = new Date();
+    const timestampISO = d.toISOString();
+    return timestampISO;
+
+ 
+}
   }
 }
 </script>
