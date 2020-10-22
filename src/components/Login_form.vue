@@ -13,7 +13,7 @@
     <label class="w3-text-blue"><b>Lösenord</b></label>
     <input class="w3-input w3-border" type="password" v-model="password">
 
-    <button class="w3-btn w3-blue w3-margin">Logga in</button>
+    <button class="w3-btn w3-blue w3-margin w3-round-large">Logga in</button>
     <Auth/>
     </form>
  
@@ -38,6 +38,7 @@ export default {
     methods: {
         submitForm: function() {
             // console.log({email: this.email,password: this.password});
+            Auth.email = this.email;
             const requestOptions = {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},

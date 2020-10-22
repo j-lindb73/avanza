@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>ME-sida i kursen jsramverk</h1>
+    <h1>Hasselstigens Avanza</h1>
     <router-view/>
   </div>
 </template>

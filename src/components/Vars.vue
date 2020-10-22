@@ -3,10 +3,10 @@
 
 <script>
 export default {
-    baseUrl: "https://me-api.hasselstigen.me", 
-    socketUrl: "https://socket-server.hasselstigen.me" 
-    // baseUrl: "http://localhost:1337" ,
-    // socketUrl: "http://localhost:3000" 
+    // baseUrl: "https://proj-api.hasselstigen.me", 
+    // socketUrl: "https://proj-api.hasselstigen.me" 
+    baseUrl: "http://localhost:1338" ,
+    socketUrl: "http://localhost:1338" 
 }
 </script>
 

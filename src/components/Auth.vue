@@ -8,12 +8,14 @@
 <script>
 export default {
     token: "",
+    email: "",
     loggedin: false,
     name: 'Auth',
     data() {
         return {
             loggedin: this.loggedin,
-            token: this.token
+            token: this.token,
+            email: this.email
         }
     },
     methods: {

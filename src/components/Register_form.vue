@@ -16,7 +16,7 @@
     <label class="w3-text-blue"><b>Lösenord</b></label>
     <input class="w3-input w3-border" type="password" v-model="password">
 
-    <button class="w3-btn w3-blue w3-margin">Registrera</button>
+    <button class="w3-btn w3-blue w3-margin w3-round-large">Registrera</button>
  
     </form>
     </div>
