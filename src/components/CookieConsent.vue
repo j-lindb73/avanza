@@ -57,7 +57,7 @@
       },
       message: {
         type: String,
-        default: 'Chattens meddelande sparas, undvik personuppgifter '
+        default: 'Inmatade uppgifter kommer att sparas i en databas.'
       },
       // button
       linkLabel: {
@@ -66,7 +66,7 @@
       },
       buttonLabel: {
         type: String,
-        default: 'Jag förstår!'
+        default: 'Jag godkänner!'
       },
       href: {
         type: String,

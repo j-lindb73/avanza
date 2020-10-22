@@ -90,7 +90,6 @@ test.describe("ME-AVANZA TESTING", function() {
 
         assertH1("Hasselstigens Avanza");
         assertButton("Logga in");
-        assertH3("Chat");
         matchUrl("/");
         
         done();
@@ -98,7 +97,7 @@ test.describe("ME-AVANZA TESTING", function() {
     
     test.it("Test Chat-page", function(done) {
         goToNavLink("Chat");
-        
+        assertH3("Chat");
         matchUrl("/chat");
         
         done();

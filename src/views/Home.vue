@@ -93,6 +93,9 @@
       <Loginform />
       </div>
     <Footer />
+    <cookie-consent
+      :cookie-expiry-days="-1"
+    />
   </div>
 </template>
 
@@ -100,12 +103,12 @@
 <script>
 import Nav from '@/components/Nav'
 import Auth from '@/components/Auth'
-// import Stocks from '@/components/Stocks'
 import Loginform from '@/components/Login_form'
 import Vars from '@/components/Vars';
 import Footer from '@/views/Footer'
 import LineChart from "../LineChart.js";
 import io from "socket.io-client";
+import CookieConsent from '@/components/CookieConsent';
 // var socket = io.connect("http://localhost:1337");
 var socket = io.connect(Vars.socketUrl);
 
@@ -117,9 +120,7 @@ export default {
     Footer,
     LineChart,
     Loginform,
-    // Stocks,
-    // NavSecure,
-    // Auth
+    CookieConsent
   },
   data() {
     return {
@@ -132,7 +133,6 @@ export default {
       stocks: [],
       stock_to_buy: "",
       stock_amount: "",
-      // stockprice: [{name:"Hallonbåtar",course:"0"},{name:"Lakritssnören",course:"0"}],
       datacollection: null,
       type: 'line',
       realtimedata_old: [[0],[0]],
@@ -341,23 +341,6 @@ export default {
           self.checkMoney();
       })
     },
-    // getMe() {
-    //   let that = this;
-    //   // fetch("https://me-api.jsramverk.se")
-    //   // fetch("http://localhost:1337")
-    //   // fetch("https://me-api.hasselstigen.me")
-
-    //   fetch(Vars.baseUrl)
-    //   .then(function(response) {
-    //     console.log(response);
-    //       return response.json();
-    //   })
-    //   .then(function(result) {
-    //     console.log(result);
-    //       that.text = result.description;
-    //       that.name = result.name;
-    //   });
-    // },
     fillData(fetchedData) {
       // fetchedData = "bajs";
       // console.log("Här är fetcheddata");

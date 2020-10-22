@@ -7,6 +7,9 @@
     <Regform />
     </div>
     <Footer />
+    <cookie-consent
+      :cookie-expiry-days="-1"
+    />
   </div>
 </template>
 
@@ -16,6 +19,7 @@ import Nav from '@/components/Nav.vue'
 import Footer from '@/views/Footer'
 import Regform from '@/components/Register_form'
 import NavSecure from '@/components/NavSecure'
+import CookieConsent from '@/components/CookieConsent';
 
 export default {
     name: 'register',
@@ -23,7 +27,8 @@ export default {
         Nav,
         Footer,
         Regform,
-        NavSecure
+        NavSecure,
+        CookieConsent
     }
 }
 </script>
