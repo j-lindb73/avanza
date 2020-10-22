@@ -42,6 +42,14 @@ function assertH2(target) {
     });
 }
 
+function assertH3(target) {
+    browser.findElement(By.css("h3")).then(function(element) {
+        element.getText().then(function(text) {
+            assert.equal(text, target);
+        });
+    });
+}
+
 function assertButton(target) {
     browser.findElement(By.css("button")).then(function(element) {
         element.getText().then(function(text) {
@@ -82,7 +90,7 @@ test.describe("ME-AVANZA TESTING", function() {
 
         assertH1("Hasselstigens Avanza");
         assertButton("Logga in");
-        
+        assertH3("Chat");
         matchUrl("/");
         
         done();

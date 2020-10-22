@@ -27,6 +27,19 @@ funktioner i backend.
 
 Överlag är jag nöjd men mitt val av teknik har en liten bieffekt som jag inte lagt tillräckligt med tid för att lösa än. När jag genomför en försäljning av aktier hämtar jag aktuell kurs på vald aktie. Det påverkar visningen av aktierna och aktuell kurs ända tills en kursuppdatering anländer. 
 
+### 'Krav 5: Tester frontend' in project specifications, in swedish)
+
+**Test 1**
+Test av förstasidan, att det är rätt rubrik, url och att det finns en Logga in-knapp.
+
+**Test 2**
+Test av Chat-sidan, att det är rätt rubrik och url.
+
+**Test 3-5**
+Test av Admin-sidan, att det är rätt rubrik, url och att det finns en Registrera-knapp.
+Tryck på Logga in i under-menyn: Test av Loggain-sidan, att det är rätt rubrik, url och att det finns en Logga in-knapp.
+Tryck på Registrera användare i under-menyn: Test av registrera användare-sidan, att det är rätt rubrik, url och att det finns en Registrera-knapp.
+
 
 ## Project setup
 
