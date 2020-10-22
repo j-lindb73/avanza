@@ -1,8 +1,18 @@
-[![Build Status](https://travis-ci.org/j-lindb73/me-app.svg?branch=master)](https://travis-ci.org/github/j-lindb73/me-app)
-[![Build Status](https://scrutinizer-ci.com/g/j-lindb73/me-app/badges/build.png?b=master)](https://scrutinizer-ci.com/g/j-lindb73/me-app/build-status/master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/j-lindb73/me-app/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/j-lindb73/me-app/?branch=master)
 
-# me-app
+# avanza
+
+## Documentation
+
+[Vue.js](vuejs.org) / [Vue CLI](https://cli.vuejs.org/) is used as framework
+
+Realtime is implemeted by using [websockets](https://en.wikipedia.org/wiki/WebSocket) with npm-package [socket.io](https://socket.io).
+
+For simulating course changes I took inspiration from  Emil Folino's [Simulate-Stock](https://github.com/emilfolino/simulate-stock)
+
+To visualize stock prizes i used npm-package [vue-chart-js](https://vue-chartjs.org/)
+
+Other realtime component is Chat which also saves posts to a document-database between sessions using [mongoDB](https://www.mongodb.com/)
+
 
 ## Project setup
 

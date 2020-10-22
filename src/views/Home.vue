@@ -37,18 +37,18 @@
         <form @submit.prevent = "toggle_money_transfer">
           <button class="w3-btn w3-round-xlarge w3-blue w3-margin">Sätt in pengar</button>
         </form>
-        <div class="money_transfer w3-modal-content w3-animate-zoom w3-card-4" v-if="money_transfer == true">
+        <div class="money_transfer w3-modal-content w3-animate-zoom w3-card-4 w3-light-gray" v-if="money_transfer == true">
           <h3>Sätt in pengar (SEK)</h3>
           <form @submit.prevent = "depositMoney">
             <p>
               <input class="w3-container" type=number v-model="user_deposit">
             </p>
             <p>
-              <button class="w3-btn w3-blue w3-margin">Skicka</button>
+              <button class="w3-btn w3-blue w3-margin w3-round-xlarge">Skicka</button>
             </p>
           </form>
           <form @submit.prevent = "toggle_money_transfer">
-              <button class="w3-btn w3-blue w3-margin">Avbryt</button>
+              <button class="w3-btn w3-blue w3-margin w3-round-xlarge">Avbryt</button>
           </form>
         </div>
       </div>
@@ -160,7 +160,7 @@ export default {
     };
   },
   created() {
-    this.getMe(),
+    // this.getMe(),
     this.getRealtimeData()
     // this.getStocks()
   },
@@ -211,8 +211,7 @@ export default {
     },
     checkMoney: function() {
       var self = this;
-      // console.log({email: Auth.email});
-      // console.log({token: Auth.token});
+
       const requestOptions = {
           method: "POST",
           headers: {
@@ -241,7 +240,10 @@ export default {
     console.log(this.user_deposit);
     const requestOptions = {
       method: "POST",
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': Auth.token
+      },
       body: JSON.stringify({
           email: Auth.email,
           money: this.user_deposit
@@ -263,11 +265,6 @@ export default {
           self.checkMoney();
       })
     },
-    sellStocks1(item) {
-      console.log(item);
-      
-      console.log(this.getStockPrice(item.name));
-    },
     sellStocks: function(item) {
         var self = this;
         // console.log({email: Auth.email});
@@ -275,7 +272,6 @@ export default {
         console.log(item);
         let price = this.getStockPrice(item.name);
         let amount = item.amount;
-
 
         const requestOptions = {
             method: "POST",
@@ -319,7 +315,10 @@ export default {
       console.log(purchase);
       const requestOptions = {
           method: "POST",
-          headers: {'Content-Type': 'application/json'},
+          headers: {
+            'Content-Type': 'application/json',
+            'x-access-token': Auth.token
+          },
           body: JSON.stringify({
               email: Auth.email,
               stockname: purchase.stockname,
@@ -342,23 +341,23 @@ export default {
           self.checkMoney();
       })
     },
-    getMe() {
-      let that = this;
-      // fetch("https://me-api.jsramverk.se")
-      // fetch("http://localhost:1337")
-      // fetch("https://me-api.hasselstigen.me")
+    // getMe() {
+    //   let that = this;
+    //   // fetch("https://me-api.jsramverk.se")
+    //   // fetch("http://localhost:1337")
+    //   // fetch("https://me-api.hasselstigen.me")
 
-      fetch(Vars.baseUrl)
-      .then(function(response) {
-        console.log(response);
-          return response.json();
-      })
-      .then(function(result) {
-        console.log(result);
-          that.text = result.description;
-          that.name = result.name;
-      });
-    },
+    //   fetch(Vars.baseUrl)
+    //   .then(function(response) {
+    //     console.log(response);
+    //       return response.json();
+    //   })
+    //   .then(function(result) {
+    //     console.log(result);
+    //       that.text = result.description;
+    //       that.name = result.name;
+    //   });
+    // },
     fillData(fetchedData) {
       // fetchedData = "bajs";
       // console.log("Här är fetcheddata");
