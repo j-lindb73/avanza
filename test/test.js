@@ -42,9 +42,19 @@ function assertH2(target) {
     });
 }
 
+function assertButton(target) {
+    browser.findElement(By.css("button")).then(function(element) {
+        element.getText().then(function(text) {
+            assert.equal(text, target);
+        });
+    });
+}
+
+
+
 
 // Test suite
-test.describe("ME-APP TESTING", function() {
+test.describe("ME-AVANZA TESTING", function() {
     this.timeout(0);
 
     test.beforeEach(function(done) {
@@ -67,42 +77,47 @@ test.describe("ME-APP TESTING", function() {
     test.it("Test landing page", function(done) {
 
         browser.getTitle().then(function(title) {
-            assert.equal(title, "me-app");
+            assert.equal(title, "me-avanza");
         });
 
-        assertH1("ME-sida i kursen jsramverk");
-
+        assertH1("Hasselstigens Avanza");
+        assertButton("Logga in");
+        
         matchUrl("/");
+        
+        done();
+    });
+    
+    test.it("Test Chat-page", function(done) {
+        goToNavLink("Chat");
+        
+        matchUrl("/chat");
+        
+        done();
+    });
+    
+    test.it("Test Admin - with submenus", function(done) {
+        
+        goToNavLink("Admin");
+        matchUrl("/register" );
+        assertButton("Registrera");
+        assertH2("Registrera användare");
+        
+        goToNavLink("Logga in");
+        matchUrl("/login" );
+        assertH2("Logga in användare");
+        assertButton("Logga in");
+        
+        goToNavLink("Registrera användare");
+        matchUrl("/register" );
+        assertH2("Registrera användare");
+        assertButton("Registrera");
 
         done();
     });
 
-    test.it("Test Report - should be able to click Edit on report Kmom02", function(done) {
-
-        goToNavLink("Redovisning");
-
-        goToNavLink("Kmom02");
-
-        matchUrl("/reports/week/2" );
-
-        goToNavLink("Redigera");
-
-        matchUrl("/reports/week/edit/2" );
-
-        assertH2("Redigera rapport");
-
-        done();
-    });
 
 
-
-    test.it("Test About-page", function(done) {
-        goToNavLink("Om");
-
-        matchUrl("/about");
-
-        done();
-    });
 
 });
 
