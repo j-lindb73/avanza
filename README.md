@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/j-lindb73/avanza.svg?branch=master)](https://travis-ci.org/github/j-lindb73/avanza)
+[![Build Status](https://scrutinizer-ci.com/g/j-lindb73/avanza/badges/build.png?b=master)](https://scrutinizer-ci.com/g/j-lindb73/avanza/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/j-lindb73/avanza/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/j-lindb73/avanza/?branch=master)
 
 # avanza
 
