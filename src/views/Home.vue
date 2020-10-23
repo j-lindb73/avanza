@@ -6,7 +6,7 @@
       <line-chart :chart-data="datacollection"  id="mychart"></line-chart>
     </div>
     <div class="w3-container w3-cell-row" >
-      <div class="w3-cell" v-for="stock in stocks"  v-bind:key="stock.name" >
+       <div class="w3-cell" v-for="stock in stocks"  v-bind:key="stock.name" >
         <h2>
           <p class="w3-card">  {{ stock.name }}  </p>
         </h2>
@@ -37,19 +37,23 @@
         <form @submit.prevent = "toggle_money_transfer">
           <button class="w3-btn w3-round-xlarge w3-blue w3-margin">Sätt in pengar</button>
         </form>
-        <div class="money_transfer w3-modal-content w3-animate-zoom w3-card-4 w3-light-gray" v-if="money_transfer == true">
-          <h3>Sätt in pengar (SEK)</h3>
-          <form @submit.prevent = "depositMoney">
-            <p>
-              <input class="w3-container" type=number v-model="user_deposit">
-            </p>
-            <p>
-              <button class="w3-btn w3-blue w3-margin w3-round-xlarge">Skicka</button>
-            </p>
-          </form>
-          <form @submit.prevent = "toggle_money_transfer">
-              <button class="w3-btn w3-blue w3-margin w3-round-xlarge">Avbryt</button>
-          </form>
+        <div class=" w3-modal-content w3-animate-zoom w3-card-4 w3-light-gray" style="max-width:400px" v-if="money_transfer == true">
+          <div class="modal-content">
+            <header class="w3-container w3-khaki">
+              <span v-on:click="toggle_money_transfer"
+      class="w3-button w3-display-topright">&times;</span>
+      <h2>Sätt in pengar</h2>
+    </header>
+
+            <form @submit.prevent = "depositMoney">
+              <p>
+                <input class="w3-container w3-input w3-center w3-xlarge" type=number v-model="user_deposit">
+              </p>
+              <p>
+                <button class="w3-btn w3-blue w3-margin w3-round-xlarge">Skicka</button>
+              </p>
+            </form>
+          </div>
         </div>
       </div>
 
@@ -431,7 +435,7 @@ export default {
   right: 40%;
   bottom: 10%;
 
-    width: 300px;
+    max-width: 300px;
     height: 250px;
     border: 1px solid black;
     border-radius: 10px;
